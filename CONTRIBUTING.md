@@ -4,8 +4,15 @@ Welcome! Your group builds **one camera screen** with a fun twist. Everything el
 
 ## 1. Setup (5 minutes)
 
+**One person per group:**
+
+1. Open https://github.com/joneikholmkea/CamerApp and click **Fork**. You now have your own copy.
+2. On your fork: **Settings → Collaborators → Add people** and add your two teammates.
+
+**Everyone in the group** (teammates: accept the invite first):
+
 ```bash
-git clone https://github.com/joneikholmkea/CamerApp.git
+git clone https://github.com/<fork-owner>/CamerApp.git
 cd CamerApp
 npm install
 npx expo start
@@ -27,16 +34,33 @@ A robot checks every pull request and will complain if you change files outside 
 
 ## 3. Git workflow
 
+The fork owner creates the group branch once:
+
 ```bash
 git checkout -b group-N          # e.g. group-3
-# ...work...
-git add groups/groupN
-git commit -m "Add countdown"    # commit often!
 git push -u origin group-N
 ```
 
-- Open **one pull request** to `main` before the deadline. The teacher merges all PRs.
-- **Not a collaborator on the repo?** Fork it on GitHub, work on your fork, and open the PR from there.
+Teammates get it:
+
+```bash
+git fetch
+git checkout group-N
+```
+
+Then everyone works like this:
+
+```bash
+git pull                         # get your teammates' changes first
+# ...work...
+git add groups/groupN
+git commit -m "Add countdown"    # commit often!
+git push
+```
+
+Before the deadline, open **one pull request** from your fork's `group-N` branch into `main` of **joneikholmkea/CamerApp**. GitHub shows a **Contribute → Open pull request** button on your fork. The teacher reviews and merges all PRs.
+
+> 💡 This fork → branch → pull request flow is how people contribute to open-source projects. In a company team you usually skip the fork and push branches to one shared repo, but the pull request part is the same.
 
 ## 4. Rename your screen
 
