@@ -3,11 +3,14 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import { groups } from '../groups/registry';
 
+// With an odd number of groups, add an invisible filler so the last card stays half width.
+const cards = groups.length % 2 === 0 ? groups : [...groups, { id: 'filler', filler: true }];
+
 export default function HomeScreen() {
   return (
     <SafeAreaView style={styles.safe} edges={['top', 'left', 'right']}>
       <FlatList
-        data={groups}
+        data={cards}
         keyExtractor={(g) => g.id}
         numColumns={2}
         columnWrapperStyle={styles.row}
@@ -18,21 +21,30 @@ export default function HomeScreen() {
             <Text style={styles.subtitle}>Class project – pick a camera</Text>
           </View>
         }
-        renderItem={({ item }) => (
-          <Pressable
-            style={({ pressed }) => [
-              styles.card,
-              { backgroundColor: item.color },
-              pressed && styles.pressed,
-            ]}
-            onPress={() => router.push({ pathname: '/group/[id]', params: { id: item.id } })}
-          >
-            <Text style={styles.emoji}>{item.emoji}</Text>
-            <Text style={styles.cardTitle} numberOfLines={2}>
-              {item.title}
-            </Text>
-          </Pressable>
-        )}
+        renderItem={({ item }) =>
+          item.filler ? (
+            <View style={styles.card} />
+          ) : (
+            <Pressable
+              style={({ pressed }) => [
+                styles.card,
+                { backgroundColor: item.color },
+                pressed && styles.pressed,
+              ]}
+              onPress={() =>
+                router.push({
+                  pathname: '/group/[id]',
+                  params: { id: item.id },
+                })
+              }
+            >
+              <Text style={styles.emoji}>{item.emoji}</Text>
+              <Text style={styles.cardTitle} numberOfLines={2}>
+                {item.title}
+              </Text>
+            </Pressable>
+          )
+        }
       />
     </SafeAreaView>
   );
@@ -56,5 +68,10 @@ const styles = StyleSheet.create({
   },
   pressed: { opacity: 0.7, transform: [{ scale: 0.97 }] },
   emoji: { fontSize: 48 },
-  cardTitle: { fontSize: 18, fontWeight: '700', color: '#111827', textAlign: 'center' },
+  cardTitle: {
+    fontSize: 18,
+    fontWeight: '700',
+    color: '#111827',
+    textAlign: 'center',
+  },
 });
