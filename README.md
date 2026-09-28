@@ -70,7 +70,7 @@ components/shared/           useCameraSetup, PermissionGate, pickFromGallery
 components/GroupErrorBoundary.js
 groups/registry.js           list of all groups
 groups/_starter/             untouched copy of the starter screen
-groups/group1 … group7/      one folder per group
+groups/group1 … group9/      one folder per group
 ```
 
-**Adding a group:** copy `groups/group7` to `groups/group8`, then add one import and one `group(...)` line in `groups/registry.js`.
+**Adding a group:** copy `groups/group9` to `groups/group10`, then add one import and one `group(...)` line in `groups/registry.js`.
