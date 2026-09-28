@@ -70,7 +70,7 @@ export default function CameraScreen() {
         {/* Makes the photo black & white */}
         <View style={[StyleSheet.absoluteFill, { backgroundColor: 'gray', mixBlendMode: 'saturation' }]} />
 
-        {/* Big black WANTED text at the bottom */}
+        {/* WANTED */}
         <Text style={styles.wanted}>WANTED</Text>
 
         {/* 🎨 YOUR PHOTO OVERLAY GOES HERE – anything rendered here appears on top of the photo
