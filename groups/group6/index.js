@@ -67,6 +67,12 @@ export default function CameraScreen() {
       <View style={styles.container}>
         <Image source={{ uri: photoUri }} style={StyleSheet.absoluteFill} resizeMode="cover" />
 
+        {/* Makes the photo black & white */}
+        <View style={[StyleSheet.absoluteFill, { backgroundColor: 'gray', mixBlendMode: 'saturation' }]} />
+
+        {/* Big black WANTED text at the bottom */}
+        <Text style={styles.wanted}>WANTED</Text>
+
         {/* 🎨 YOUR PHOTO OVERLAY GOES HERE – anything rendered here appears on top of the photo
             (frames, stickers, date stamps...). Use position: 'absolute' to place things. */}
 
@@ -130,6 +136,16 @@ export default function CameraScreen() {
 // All the styles for this screen. Change colors and sizes freely!
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: 'black' },
+  wanted: {
+    position: 'absolute',
+    bottom: 120,
+    left: 0,
+    right: 0,
+    textAlign: 'center',
+    fontSize: 72,
+    fontWeight: '900',
+    color: 'black',
+  },
   bottomBar: {
     position: 'absolute',
     left: 0,
