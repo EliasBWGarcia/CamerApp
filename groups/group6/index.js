@@ -36,12 +36,10 @@ export const meta = {
 
 // The silly crimes that can show up on the poster. Add your own!
 const CRIMES = [
-  "Eating the last donut 🍩",
-  "Stealing socks 🧦",
-  "Being too handsome 😎",
-  "Forgetting the homework 📚",
-  "Laughing at own jokes 🤣",
-  "Using Internet Explorer 🐌",
+  "Kommer 30 minutter forsent til undervisning",
+  "Kl. 9 har du allerede drukket 2 redbulls og en kop kaffe",
+  "Glemt din computeroplader",
+  "Skal på arbejde så jeg har ikke tid til gruppearbejde",
 ];
 
 export default function CameraScreen() {
